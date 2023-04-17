@@ -5,7 +5,7 @@ from Structures.data_store import data_store
 app = Flask(__name__, static_url_path='/static')
 CORS(app)
 
-data = data_store()
+data_s = data_store()
 
 
 @app.route('/')
