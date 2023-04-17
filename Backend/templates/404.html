@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Page not found. {% endblock %}
+
+{% block styles %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/404.css') }}"> {% endblock %}
+
+
+{% block topproduct %}
+{{ data.message }}
+{% endblock %}
+
+{% block listproducts %}
+<h1>{{ data.error }}</h1> 
+{% endblock %}
