@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block styles %}
+<script src="{{ url_for('static', filename='js/sign_up.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign_up.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -9,4 +11,47 @@ Sign Up
 
 {% block topproduct %}{% endblock %}
 
-{% block listproducts %}<h2>Hello from template Sign Up.</h2>{% endblock %}
+{% block listproducts %}
+
+<div id="container-sign">
+
+    <div id="div-logo-sign">
+        <img id="icono-sign-up" src="{{ url_for('static', filename='img/icono-sign-up.png') }}" alt="">
+    </div>
+
+    <div id="div-form-sign">
+        <form action="/sign_up/" id="form-sign">
+
+            <div class="label-input-sign">
+                <label for="">Nombre</label>
+                <input type="text" name="name" id="name" required placeholder="Ingrese su nombre">
+            </div>
+            <div class="label-input-sign">
+                <label for="">Apellido</label>
+                <input type="text" name="last_name" id="last_name" required placeholder="Ingrese su apellido">
+            </div>
+            <div class="label-input-sign">
+                <label for="">Usuario</label>
+                <input type="text" name="user" id="user" required placeholder="Ingrese su nombre de usuario">
+            </div>
+            <div class="label-input-sign">
+                <label for="">Contraseña</label>
+                <input type="password" name="password" id="password" required placeholder="Ingrese su contraseña" oninput="comparePasswords()">
+            </div>
+            <div class="label-input-sign">
+                <label for="Confirm">Confirmar contraseña</label>
+                <input type="password" name="confirm_password" id="confirm_password" required placeholder="Ingrese de nuevo su contraseña" oninput="comparePasswords()">
+            </div>
+            <div class="label-input-sign">
+                <button type="submit" name="boton" id="boton">Enviar</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="div-create-sign">
+        <span>¿Ya tienes una cuenta?<a href=""> Iniciar sesión</a></span>
+    </div>
+</div>
+
+{% endblock %}

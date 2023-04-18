@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_cors import CORS
 from Structures.data_store import data_store
 
@@ -11,13 +11,32 @@ data_s = data_store()
 @app.route('/')
 @app.route('/index/')
 def index():
-    data = {"message": "Index"}
+    user = "None"
+    id = -1
+    try:
+        user = str(request.args.get('user'))
+        id = int(request.args.get('id'))
+    except Exception as ex:
+        pass
+
+    data = {"message": "Index", "user": user, "id": id}
     return render_template('index.html', data=data)
 
 
-@app.route('/login/')
+@app.route('/login/', methods=['GET'])
 def login():
     data = {"message": "Login"}
+
+    user = request.args.get('user')
+    password = request.args.get('password')
+
+    if user is not None:
+        state = data_s.get_users().login(user, password)
+        print(state)
+        if state['status'] == "error":
+            redirect(url_for('login'))
+    
+
     return render_template('login.html', data=data)
 
 

@@ -2,10 +2,41 @@
 
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
 {% endblock %}
 
 {% block title %} Login {% endblock %}
 
 {% block topproduct %}{% endblock %}
 
-{% block listproducts %}<h2>Hello from template {{data.message}}.</h2>{% endblock %}
+{% block listproducts %}
+<!-- <h2>Hello from template {{data.message}}.</h2> -->
+<div id="container">
+    <div id="div-logo-login">
+        <img id="icono-login" src="{{ url_for('static', filename='img/icono-login.png') }}" alt="">
+    </div>
+    <div id="div-form">
+        <form action="/login/" method="GET" id="form-login">
+
+            <div class="label-input">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="user" id="user" required placeholder="Ingrese su nombre de usuario">
+            </div>
+            <div class="label-input">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" name="password" id="password" required placeholder="Ingrese su contraseña">
+            </div>
+
+            <div class="label-input">
+                <button type="submit">Entrar</button>
+            </div>
+            
+        </form>
+    </div>
+    <div id="div-create-login">
+        <span>¿No tienes una cuenta? <a href=""> Regístrate</a></span>
+    </div>
+</div>
+
+
+{% endblock %}

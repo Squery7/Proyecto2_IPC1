@@ -8,4 +8,12 @@
 
 {% block topproduct %}{% endblock %}
 
-{% block listproducts %}<h2>Hello from template {{data.message}}.</h2>{% endblock %}
+{% block listproducts %}
+
+{% if data.user == "None" and data.id == -1 %}
+<h2>Hello from template {{data.message}}.</h2>
+{% else %}
+<h2>Hello '{{ data.user }}' with id '{{ data.id }}' from template {{data.message}}.</h2>
+{% endif %}
+
+{% endblock %}
