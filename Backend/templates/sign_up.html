@@ -9,7 +9,16 @@
 Sign Up
 {% endblock %}
 
-{% block topproduct %}{% endblock %}
+{% block topproduct %}
+{% for element in data.product_top %}
+<div class="card-top-base">
+    <a href="{{ element.get_id() }}"><p>{{ element.get_name() }}</p></a>
+    <a href="{{ element.get_id() }}"><img src="{{ element.get_photo() }}" alt="{{ element.get_name() }}.png"></a>
+    <p>Descripción: {{ element.get_description() }}</p>
+    <p>Precio: {{ element.get_price() }}</p>
+</div>
+{% endfor %}
+{% endblock %}
 
 {% block listproducts %}
 

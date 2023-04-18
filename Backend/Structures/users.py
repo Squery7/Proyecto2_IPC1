@@ -4,7 +4,7 @@ from Structures.person import person
 class users:
     def __init__(self):
         self.__users = [
-            person(0, "admin", "admin", "admin", "@dm!n1234", "administrator")]
+            person(0, "admin", "admin", "admin", "@dm!n1234", "administrator", [])]
 
     def create(self, _values): # _values={"_id": "", "_name": "", "_last_name": "", "_user": "", "_password": "", "_type": ""}
         new_person = person(_values["_id"], _values["_name"], _values["_last_name"], _values["_user"], _values["_password"], _values["_type"])

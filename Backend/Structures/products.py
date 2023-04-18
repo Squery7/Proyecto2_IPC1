@@ -4,6 +4,16 @@ from Structures.game import game
 class products:
     def __init__(self):
         self.__products = []
+        for x in range (1, 800):
+            if x > 99:
+                self.__products.append(game(x-1, "Prueba", 2023, 500, ["tech", "new", "gaming"],
+                                "https://assets.pokemon.com/assets/cms2/img/pokedex/full/{}.png".format(x), "", "Prueba Gamer ASUS"))
+            elif x > 9:
+                self.__products.append(game(x-1, "Prueba", 2023, 500, ["tech", "new", "gaming"],
+                                "https://assets.pokemon.com/assets/cms2/img/pokedex/full/0{}.png".format(x), "", "Prueba Gamer ASUS"))
+            else:
+                self.__products.append(game(x-1, "Prueba", 2023, 500, ["tech", "new", "gaming"],
+                                "https://assets.pokemon.com/assets/cms2/img/pokedex/full/00{}.png".format(x), "", "Prueba Gamer ASUS"))
 
     def create(self, _values):
         new_game = game(_values["_id"], _values["_name"],  _values["_year"], _values["_price"],
@@ -34,6 +44,13 @@ class products:
             "status": "success",
             "msg": "This is the game.",
             "game": game
+        }
+
+    def read_all(self):
+        return {
+            "status": "success",
+            "msg": "These are all the products.",
+            "game": self.__products
         }
 
     def update(self, _id, _values):

@@ -19,7 +19,10 @@ def index():
     except Exception as ex:
         pass
 
-    data = {"message": "Index", "user": user, "id": id}
+    product_top = data_s.get_products().read_all()['game']
+
+    data = {"message": "Index", "user": user,
+            "id": id, "product_top": product_top}
     return render_template('index.html', data=data)
 
 
@@ -35,37 +38,63 @@ def login():
         print(state)
         if state['status'] == "error":
             redirect(url_for('login'))
-    
 
+    product_top = data_s.get_products().read_all()['game']
+    data['product_top'] = product_top
     return render_template('login.html', data=data)
 
 
 @app.route('/sign_up/')
 def sign_up():
     data = {"message": "Sign Up"}
+    product_top = data_s.get_products().read_all()['game']
+    data['product_top'] = product_top
     return render_template('sign_up.html', data=data)
 
 
 @app.route('/catalog/')
 def catalog():
     data = {"message": "Catalog"}
+    product_top = data_s.get_products().read_all()['game']
+    data['product_top'] = product_top
     return render_template('catalog.html', data=data)
 
 
 @app.route('/directory/')
 def directory():
     data = {"message": "Directory"}
+    product_top = data_s.get_products().read_all()['game']
+    data['product_top'] = product_top
     return render_template('directory.html', data=data)
 
 
 @app.route('/categories/')
 def categories():
     data = {"message": "Categories"}
+    product_top = data_s.get_products().read_all()['game']
+    data['product_top'] = product_top
     return render_template('categories.html', data=data)
 
+@app.route('/product/')
+def product():
+    id_product = ""
+    try:
+        id_product = int(request.args.get('id'))
+    except Exception as ex:
+        id_product = -1
+
+    product = data_s.get_products().read(id_product)
+    product_top = data_s.get_products().read_all()['game']
+    
+
+    data = {"product": product}
+    data['product_top'] = product_top
+    return render_template('product.html', data=data)
 
 def page_not_found(error):
     data = {"error": "404", "message": error}
+    product_top = data_s.get_products().read_all()['game']
+    data['product_top'] = product_top
     return render_template('404.html', data=data), 404
 
 

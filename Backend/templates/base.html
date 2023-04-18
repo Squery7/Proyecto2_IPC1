@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     {% block styles %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -23,8 +24,13 @@
                 <a href="/catalog/"><i class="fa-solid fa-bars"></i> Catalogo</a>
                 <a href="/directory/"><i class="fa-solid fa-book"></i> Biblioteca</a>
                 <a href="/categories/"><i class="fa-solid fa-table"></i> Categorias</a>
-                <input placeholder="Busqueda" type="search" name="busqueda" id="busqueda">
-                
+            </div>
+            <div id="div-search">
+                <form action="">
+                    <i class="fa fa-search search-icon" id="icono" onclick="fijarSearch()"></i>
+                    <input class="hide-search" placeholder="Busqueda" type="search" name="busqueda" id="busqueda" required onblur="ocultarSearch()">
+                    <button type="submit" class="hide-search" id="btn-enviar" onblur="ocultarSearch()">Enviar</button>
+                </form>
             </div>
             <div id="account">
                 <a href="/login/"><i class="fas fa-key"></i> Login</a>
@@ -34,7 +40,7 @@
     </header>
 
     <main> <!-- 75% -->
-        
+
         <div id="top-product">
             {% block topproduct %}{% endblock %}
         </div>
@@ -45,7 +51,7 @@
 
     <footer> <!-- 10% -->
         <div id="social">
-            
+
             <ul>
                 <li><a href="">YouTube</a></li>
                 <li><a href="">Facebook</a></li>
@@ -60,7 +66,7 @@
         <div id="info">
             <p>Información</p>
         </div>
-        
+
 
     </footer>
 

@@ -6,14 +6,32 @@
 
 {% block title %} Index {% endblock %}
 
-{% block topproduct %}{% endblock %}
+{% block topproduct %}
+
+{% for element in data.product_top %}
+<a href="/product?id={{ element.get_id() }}" class="card-link">
+    <div class="card-top-base">
+        <p>{{ element.get_name() }}</p>
+        <img src="{{ element.get_photo() }}" alt="{{ element.get_name() }}.png">
+        <p>Descripción: {{ element.get_description() }}</p>
+        <p>Precio: {{ element.get_price() }}</p>
+    </div>
+</a>
+
+{% endfor %}
+
+{% endblock %}
 
 {% block listproducts %}
+{% for element in data.product_top %}
+<a href="/product?id={{ element.get_id() }}" class="card-list-base">
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <p>Titulo</p>
+        <img src="{{ element.get_photo() }}" alt="{{ element.get_name() }}.png">
+        <p>Descripción {{ element.get_description() }}</p>
+        <p>Precio {{ element.get_price() }}</p>
+    </div>
+</a>
 
-{% if data.user == "None" and data.id == -1 %}
-<h2>Hello from template {{data.message}}.</h2>
-{% else %}
-<h2>Hello '{{ data.user }}' with id '{{ data.id }}' from template {{data.message}}.</h2>
-{% endif %}
-
+{% endfor %}
 {% endblock %}

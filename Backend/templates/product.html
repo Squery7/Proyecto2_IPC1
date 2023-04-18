@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block title %} Producto {% endblock %}
+
+{% block topproduct %}
+{% for element in data.product_top %}
+<a href="/product?id={{ element.get_id() }}" class="card-link">
+    <div class="card-top-base">
+        <p>{{ element.get_name() }}</p>
+        <img src="{{ element.get_photo() }}" alt="{{ element.get_name() }}.png">
+        <p>Descripción: {{ element.get_description() }}</p>
+        <p>Precio: {{ element.get_price() }}</p>
+    </div>
+</a>
+
+{% endfor %}
+{% endblock %}
+
+{% block listproducts %}
+
+<h1>Nombre: {{ data.product.game.get_name() }}</h1>
+
+<br>
+<img src="{{ data.product.game.get_photo() }}" alt="{{ data.product.game.get_name() }}.png">
+<br>
+<p>Año: {{ data.product.game.get_year() }}</p>
+<br>
+<p>Precio: {{ data.product.game.get_price() }}</p>
+<br>
+<ul>
+    {% for c in data.product.game.get_categories() %}
+    <li> {{ c }} </li>
+    {% endfor %}
+</ul>
+<br>
+<p>Descripción: {{ data.product.game.get_description() }}</p>
+<br>
+
+
+{% endblock %}

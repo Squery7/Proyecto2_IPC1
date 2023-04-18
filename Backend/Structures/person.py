@@ -1,11 +1,12 @@
 class person:
-    def __init__(self, _id, _name, _last_name, _user, _password, _type):
+    def __init__(self, _id, _name, _last_name, _user, _password, _type, _user_products):
         self.__id = _id
         self.__name = _name
         self.__last_name = _last_name
         self.__user = _user
         self.__password = _password
         self.__type = _type
+        self.__user_products = _user_products
 
     # Getters
     def get_id(self):
